@@ -58,6 +58,8 @@ This function is called by `org-babel-execute-src-block'."
 	 (cmd (if (string= "" org-plantuml-cmd)
 		  (error "`org-plantuml-command' is not set")
 		(concat org-plantuml-cmd
+			(if (string= (file-name-extension out-file) "png")
+			    " -tpng" "")
 			(if (string= (file-name-extension out-file) "svg")
 			    " -tsvg" "")
 			(if (string= (file-name-extension out-file) "eps")
